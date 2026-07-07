@@ -13,13 +13,13 @@ pipeline {
     stages {
         stage('Instalar dependencias') {
             steps {
-                sh 'docker run --rm -v jenkins_data:/var/jenkins_home -w "$WORKSPACE" node:20 npm install'
+                sh 'docker run --rm -v jenkins_home:/var/jenkins_home -w "$WORKSPACE" node:20 npm install'
             }
         }
 
         stage('Ejecutar tests') {
             steps {
-                sh 'docker run --rm -v jenkins_data:/var/jenkins_home -w "$WORKSPACE" node:20 npm test'
+                sh 'docker run --rm -v jenkins_home:/var/jenkins_home -w "$WORKSPACE" node:20 npm test'
             }
         }
 

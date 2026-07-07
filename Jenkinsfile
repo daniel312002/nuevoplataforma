@@ -7,20 +7,19 @@ pipeline {
     }
 
     tools {
-        nodejs "Node25"     // Instalación NodeJS configurada en Jenkins
         dockerTool 'Dockertool'  // Herramienta Docker configurada en Jenkins
     }
 
     stages {
         stage('Instalar dependencias') {
             steps {
-                sh 'npm install'
+                sh 'docker run --rm -v "$WORKSPACE":/app -w /app node:20 npm install'
             }
         }
 
         stage('Ejecutar tests') {
             steps {
-                sh 'npm test'
+                sh 'docker run --rm -v "$WORKSPACE":/app -w /app node:20 npm test'
             }
         }
 

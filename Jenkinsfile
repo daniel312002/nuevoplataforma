@@ -7,7 +7,7 @@ pipeline {
     }
 
     tools {
-        nodejs "Node18"      // Instalación NodeJS configurada en Jenkins
+        nodejs "Node25"     // Instalación NodeJS configurada en Jenkins
         dockerTool 'Dockertool'  // Herramienta Docker configurada en Jenkins
     }
 
